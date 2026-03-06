@@ -6,7 +6,7 @@
 const TEBEX_CONFIG = {
     // IMPORTANT: Replace this with your actual Tebex Headless API key
     // Get your API key from: https://docs.tebex.io/developers/headless-api/overview
-    API_KEY: 'YOUR_TEBEX_API_KEY_HERE',
+    API_KEY: '11pj5-c2611b98dfd78eaca620a0e2f72214bab56cbb8d',
     
     // API Base URLs
     BASE_URL: 'https://headless.tebex.io/api',
