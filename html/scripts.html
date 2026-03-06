@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts - Foundation 1899 Store</title>
+    <link rel="stylesheet" href="../css/scripts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-text">FOUNDATION 1899</span>
+                <span class="logo-subtext">SCRIPTS</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">HOME</a></li>
+                    <li><a href="redm-store.html" class="nav-link">REDM STORE</a></li>
+                    <li><a href="scripts.html" class="nav-link active">SCRIPTS</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <!-- Basket Icon -->
+                <button class="basket-btn" id="basketBtn">
+                    <svg class="basket-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="basket-count" id="basketCount">0</span>
+                </button>
+                <a href="scripts.html" class="browse-btn">BROWSE SCRIPTS</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="redm-store.html">REDM STORE</a></li>
+            <li><a href="scripts.html">SCRIPTS</a></li>
+        </ul>
+        <button class="mobile-basket-btn" id="mobileBasketBtn">
+            <svg class="basket-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span>Basket (<span id="mobileBasketCount">0</span>)</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="scripts-page">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="header-content">
+                <h1 class="page-title">Script Store</h1>
+                <p class="page-subtitle">Premium hand-crafted scripts for your server</p>
+            </div>
+        </section>
+
+        <!-- Categories Filter -->
+        <section class="categories-section">
+            <div class="categories-container">
+                <button class="category-btn active" data-category="all">
+                    All Scripts
+                </button>
+                <!-- Categories will be dynamically inserted here -->
+                <div id="categoriesContainer"></div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+            
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loader"></div>
+                <p>Loading scripts...</p>
+            </div>
+            
+            <!-- Error State -->
+            <div class="error-state" id="errorState" style="display: none;">
+                <div class="error-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <h3>Unable to Load Scripts</h3>
+                <p id="errorMessage">Please check your connection and try again.</p>
+                <button class="retry-btn" id="retryBtn">Retry</button>
+            </div>
+            
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                        <polyline points="13 2 13 9 20 9"/>
+                    </svg>
+                </div>
+                <h3>No Scripts Found</h3>
+                <p>There are no scripts available in this category.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Basket Sidebar -->
+    <div class="basket-overlay" id="basketOverlay">
+        <div class="basket-sidebar">
+            <div class="basket-header">
+                <h2>Your Basket</h2>
+                <button class="basket-close" id="basketClose">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="basket-items" id="basketItems">
+                <!-- Basket items will be dynamically inserted -->
+            </div>
+            <div class="basket-footer" id="basketFooter">
+                <div class="basket-total">
+                    <span>Total:</span>
+                    <span class="total-amount" id="basketTotal">$0.00</span>
+                </div>
+                <a href="#" class="checkout-btn" id="checkoutBtn">
+                    Proceed to Checkout
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="basket-empty" id="basketEmpty">
+                <div class="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                </div>
+                <p>Your basket is empty</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition">
+        <div class="transition-content">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script src="../js/tebex-api.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+</html>

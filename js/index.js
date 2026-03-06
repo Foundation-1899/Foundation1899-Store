@@ -1,18 +1,16 @@
 // ============================================
-// Store Page JavaScript
+// Foundation 1899 Scripts - Homepage JavaScript
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all functionality
     initMobileMenu();
     initHeaderScroll();
     initPageTransitions();
-    initBasket();
+    initSmoothScrolling();
 });
 
-// ============================================
-// Mobile Menu
-// ============================================
-
+// Mobile Menu Toggle
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileNav = document.querySelector('.mobile-nav');
@@ -21,6 +19,7 @@ function initMobileMenu() {
         mobileMenuBtn.addEventListener('click', function() {
             mobileNav.classList.toggle('active');
             
+            // Animate hamburger to X
             const spans = this.querySelectorAll('span');
             if (mobileNav.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -33,6 +32,7 @@ function initMobileMenu() {
             }
         });
         
+        // Close menu when clicking a link
         const mobileLinks = mobileNav.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -44,6 +44,7 @@ function initMobileMenu() {
             });
         });
         
+        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!mobileMenuBtn.contains(event.target) && !mobileNav.contains(event.target)) {
                 mobileNav.classList.remove('active');
@@ -56,28 +57,28 @@ function initMobileMenu() {
     }
 }
 
-// ============================================
-// Header Scroll
-// ============================================
-
+// Header Scroll Effect
 function initHeaderScroll() {
     const header = document.querySelector('.main-header');
     
     if (header) {
+        let lastScroll = 0;
+        
         window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 50) {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
         });
     }
 }
 
-// ============================================
-// Page Transitions
-// ============================================
-
+// Page Transition Effect
 function initPageTransitions() {
     const transition = document.querySelector('.page-transition');
     const links = document.querySelectorAll('a[href$=".html"]');
@@ -85,20 +86,25 @@ function initPageTransitions() {
     if (transition) {
         links.forEach(link => {
             link.addEventListener('click', function(e) {
+                // Skip if it's the current page or has target="_blank"
                 const href = this.getAttribute('href');
                 if (href === window.location.pathname || href.startsWith('#') || this.target === '_blank') {
                     return;
                 }
                 
                 e.preventDefault();
+                
+                // Show transition
                 transition.classList.add('active');
                 
+                // Navigate after transition
                 setTimeout(() => {
                     window.location.href = href;
                 }, 300);
             });
         });
         
+        // Hide transition when page loads
         window.addEventListener('load', function() {
             setTimeout(() => {
                 transition.classList.remove('active');
@@ -107,20 +113,42 @@ function initPageTransitions() {
     }
 }
 
-// ============================================
-// Basket (Simplified for Store Page)
-// ============================================
-
-function initBasket() {
-    const basketBtn = document.getElementById('basketBtn');
-    const mobileBasketBtn = document.getElementById('mobileBasketBtn');
+// Smooth Scrolling
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
     
-    // For the store page, basket buttons link to scripts page
-    basketBtn?.addEventListener('click', () => {
-        window.location.href = 'scripts.html';
-    });
-    
-    mobileBasketBtn?.addEventListener('click', () => {
-        window.location.href = 'scripts.html';
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
 }
+
+// Add intersection observer for scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe elements with animation classes
+document.querySelectorAll('.slide-in-left, .slide-in-right, .fade-in').forEach(el => {
+    observer.observe(el);
+});
