@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedM Store - Foundation 1899 Scripts</title>
+    <link rel="stylesheet" href="../css/store.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-text">FOUNDATION 1899</span>
+                <span class="logo-subtext">SCRIPTS</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">HOME</a></li>
+                    <li><a href="redm-store.html" class="nav-link active">REDM STORE</a></li>
+                    <li><a href="scripts.html" class="nav-link">SCRIPTS</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="basket-btn" id="basketBtn">
+                    <svg class="basket-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span class="basket-count" id="basketCount">0</span>
+                </button>
+                <a href="scripts.html" class="browse-btn">BROWSE SCRIPTS</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="redm-store.html">REDM STORE</a></li>
+            <li><a href="scripts.html">SCRIPTS</a></li>
+        </ul>
+        <button class="mobile-basket-btn" id="mobileBasketBtn">
+            <svg class="basket-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            <span>Basket (<span id="mobileBasketCount">0</span>)</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="store-page">
+        <!-- Hero Section -->
+        <section class="store-hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 100 100" class="badge-icon">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M50 10 L50 90 M10 50 L90 50" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h1 class="hero-title">RedM Store</h1>
+                <p class="hero-subtitle">RED DEAD ROLEPLAY</p>
+                <p class="hero-description">
+                    Premium hand-crafted scripts for Red Dead Redemption 2 roleplay servers. 
+                    Economy systems, jobs, RP mechanics, and more — built with authenticity for the frontier.
+                </p>
+                <a href="scripts.html" class="hero-btn">
+                    EXPLORE SCRIPTS
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        </svg>
+                    </div>
+                    <h3>Optimized Performance</h3>
+                    <p>All scripts are built with performance in mind, ensuring smooth gameplay even on high-population servers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>Continuous improvements and new features based on community feedback and RedM updates.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3>Easy Configuration</h3>
+                    <p>Highly configurable scripts with detailed documentation to customize every aspect to your needs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Community Support</h3>
+                    <p>Join our Discord community for support, suggestions, and to connect with other server owners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Preview -->
+        <section class="categories-preview">
+            <div class="section-header">
+                <h2>Script Categories</h2>
+                <p>Browse our collection by category</p>
+            </div>
+            
+            <div class="categories-grid">
+                <a href="scripts.html?category=economy" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>Economy Systems</h3>
+                    <p>Banking, trading, and financial mechanics</p>
+                </a>
+                
+                <a href="scripts.html?category=jobs" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3>Job Systems</h3>
+                    <p>Employment and career opportunities</p>
+                </a>
+                
+                <a href="scripts.html?category=roleplay" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Roleplay Mechanics</h3>
+                    <p>Immersion and interaction systems</p>
+                </a>
+                
+                <a href="scripts.html?category=vehicles" class="category-card">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+                            <circle cx="6.5" cy="16.5" r="2.5"/>
+                            <circle cx="16.5" cy="16.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Vehicle Systems</h3>
+                    <p>Wagons, horses, and transportation</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Enhance Your Server?</h2>
+                <p>Browse our complete collection of premium scripts and take your RedM server to the next level.</p>
+                <a href="scripts.html" class="cta-btn">
+                    View All Scripts
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Page Transition Overlay -->
+    <div class="page-transition">
+        <div class="transition-content">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script src="../js/store.js"></script>
+</body>
+</html>
