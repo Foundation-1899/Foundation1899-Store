@@ -1,6 +1,4 @@
 const TEBEX_PUBLIC_TOKEN = '11pj5-c2611b98dfd78eaca620a0e2f72214bab56cbb8d'; 
-// store.js
-const TEBEX_PUBLIC_TOKEN = 'YOUR_PUBLIC_WEBSTORE_TOKEN_HERE'; 
 const TEBEX_STORE_URL = 'https://redm.foundation1899.com';
 
 const TEBEX_API_URL = `https://headless.tebex.io/api/accounts/${TEBEX_PUBLIC_TOKEN}`;
