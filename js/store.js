@@ -4,15 +4,60 @@ const TEBEX_API_URL = `https://headless.tebex.io/api/accounts/${TEBEX_PUBLIC_TOK
 let globalPackages = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    fetchCategories(); // Fetch categories first
     fetchPackages();
 });
 
+// --- CATEGORY LOGIC ---
+async function fetchCategories() {
+    try {
+        const response = await fetch(`${TEBEX_API_URL}/categories`);
+        const data = await response.json();
+        renderCategories(data.data);
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+    }
+}
+
+function renderCategories(categories) {
+    const container = document.getElementById('category-container');
+    
+    categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = "hover:text-gold transition pb-2 filter-btn uppercase";
+        btn.innerText = cat.name;
+        // When clicked, filter by this category's ID
+        btn.onclick = () => filterProducts(cat.id, btn);
+        container.appendChild(btn);
+    });
+}
+
+function filterProducts(categoryId, clickedBtn) {
+    // 1. Reset all buttons to gray
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('text-gold', 'border-b', 'border-gold');
+    });
+    
+    // 2. Highlight the clicked button in gold
+    clickedBtn.classList.add('text-gold', 'border-b', 'border-gold');
+
+    // 3. Filter the grid
+    if (categoryId === 'all') {
+        renderProducts(globalPackages);
+    } else {
+        const filtered = globalPackages.filter(pkg => pkg.category && pkg.category.id === categoryId);
+        renderProducts(filtered);
+    }
+}
+
+
+// --- PACKAGE LOGIC ---
 async function fetchPackages() {
     try {
         const response = await fetch(`${TEBEX_API_URL}/packages`);
         const data = await response.json();
         globalPackages = data.data;
-        renderProducts(globalPackages);
+        renderProducts(globalPackages); // Initially render ALL packages
     } catch (error) {
         console.error('Error fetching packages:', error);
         document.getElementById('product-grid').innerHTML = '<p class="text-red-500">Failed to load scripts.</p>';
@@ -29,6 +74,11 @@ function getPrice(pkg) {
 function renderProducts(packages) {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = ''; 
+
+    if (packages.length === 0) {
+        grid.innerHTML = '<p class="text-gray-500 italic">No scripts found in this category.</p>';
+        return;
+    }
 
     packages.forEach(pkg => {
         const imageUrl = pkg.image ? pkg.image : 'https://via.placeholder.com/400x200/151412/dcb36b?text=Foundation+1899';
@@ -75,15 +125,18 @@ function addToCart(packageId) {
     if (!pkg) return;
     let cart = JSON.parse(localStorage.getItem('f1899_cart')) || [];
     if (cart.find(item => item.id === packageId)) {
-        alert(`${pkg.name} is already in your cart!`);
+        alert(`${pkg.name} is already in your ledger!`);
         return;
     }
     cart.push(pkg);
     localStorage.setItem('f1899_cart', JSON.stringify(cart));
-    event.target.innerText = "ADDED!";
-    event.target.style.backgroundColor = "#4ade80";
+    
+    // Quick visual feedback on the button
+    const originalText = event.target.innerText;
+    event.target.innerText = "ADDED TO LEDGER!";
+    event.target.style.backgroundColor = "#4ade80"; // Green
     setTimeout(() => {
-        event.target.innerText = "ADD TO CART";
+        event.target.innerText = originalText;
         event.target.style.backgroundColor = ""; 
     }, 2000);
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation 1899 | Scripts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <nav class="flex justify-between items-center px-10 py-6 border-b border-gray-800">
+        <div class="flex items-center space-x-4">
+            <a href="index.html">
+                <img src="img/logo.png" alt="Foundation 1899" class="h-10">
+            </a>
+        </div>
+        <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] font-semibold text-gray-400">
+            <a href="index.html" class="hover:text-gold transition">HOME</a>
+            <a href="store.html" class="text-gold transition border-b border-gold pb-1">REDM STORE</a>
+            <a href="store.html" class="hover:text-gold transition">SCRIPTS</a>
+        </div>
+        <a href="html/basket.html" class="buy-btn px-6 py-3 text-xs font-bold tracking-widest text-center flex items-center justify-center">
+            VIEW LEDGER
+        </a>
+    </nav>
+
+    <div id="category-container" class="w-full flex justify-center space-x-8 text-[10px] font-semibold tracking-widest text-gray-500 mt-8 mb-4 flex-wrap gap-y-4">
+        <button onclick="filterProducts('all', this)" class="text-gold border-b border-gold pb-2 filter-btn uppercase">ALL</button>
+        </div>
+
+    <main class="flex-grow p-10 max-w-7xl mx-auto w-full">
+        <div class="mb-8 flex justify-between items-center text-xs tracking-widest text-gray-500 uppercase border-b border-gray-800 pb-4">
+            <span>Scripts - All Categories</span>
+            <span>All include lifetime updates</span>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <p class="text-gray-500 italic">Loading frontier assets...</p>
+        </div>
+    </main>
+
+    <script src="js/store.js"></script>
+</body>
+</html>
