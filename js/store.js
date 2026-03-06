@@ -60,7 +60,7 @@ function renderProducts(packages) {
                     </span>
                     
                     <button onclick="addToCart(${pkg.id})" 
-                       class="buy-btn px-6 py-2 text-xs font-bold tracking-widest cursor-pointer text-center border-none">
+                        class="buy-btn px-6 py-2 text-xs font-bold tracking-widest cursor-pointer text-center border-none">
                         ADD TO CART
                     </button>
                 </div>
