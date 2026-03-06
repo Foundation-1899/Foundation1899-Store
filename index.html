@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedM Script Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0d0c0b; font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .text-gold { color: #dcb36b; }
+        .bg-gold { background-color: #dcb36b; }
+        .border-gold { border-color: #dcb36b; }
+        .card-bg { background-color: #151412; }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen flex flex-col">
+    <nav class="flex justify-between items-center px-10 py-6 border-b border-gray-800">
+        <div class="flex items-center space-x-4">
+            <div class="text-gold font-serif text-2xl tracking-widest uppercase">YourStore</div>
+        </div>
+        <div class="hidden md:flex space-x-8 text-xs tracking-[0.2em] font-semibold text-gray-400">
+            <a href="#" class="hover:text-gold transition">HOME</a>
+            <a href="#" class="text-gold transition border-b border-gold pb-1">REDM STORE</a>
+            <a href="#" class="hover:text-gold transition">SCRIPTS</a>
+        </div>
+        <button class="bg-gold text-black px-6 py-3 text-xs font-bold tracking-widest hover:bg-yellow-500 transition">
+            BROWSE SCRIPTS
+        </button>
+    </nav>
+    <main class="flex-grow p-10 max-w-7xl mx-auto w-full">
+        <div class="mb-8 flex justify-between items-center text-xs tracking-widest text-gray-500 uppercase">
+            <span>9 Scripts - All Categories</span>
+            <span>All include lifetime updates</span>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </main>
+
+    <script src="store.js"></script>
+</body>
+</html>
